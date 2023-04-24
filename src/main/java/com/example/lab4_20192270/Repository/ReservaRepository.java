@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 public interface ReservaRepository extends JpaRepository<Reserva,Integer> {
 
     @Modifying
-    @Query(nativeQuery = true, value = "insert into reserva (idreserva, fecha_reserva, precio_total, estado_pago, user_iduser, vuelo_idvuelo) VALUES (?, current_timestamp, ?, 'procesado', ?, ?)")
-    void reservar(Integer reserva_id, Integer vuelo_id, Integer user_id, Integer precio_total);
+    @Query(nativeQuery = true, value = "insert into reserva (fecha_reserva, precio_total, estado_pago, user_iduser, vuelo_idvuelo) VALUES (current_timestamp, ?1, 'procesado', ?2, ?3)")
+
+    void reservar(Integer vuelo_id, Integer user_id, Integer precio_total);
+
 }

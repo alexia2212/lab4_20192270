@@ -53,12 +53,12 @@ public class HomeController {
 
 
     @PostMapping(value ="/reserva")
-    @Transactional
-    public String reservar(@RequestParam("reserva_id") Integer reserva_id,@RequestParam("vuelo_id")Integer vuelo_id, @RequestParam("user_id") Integer user_id, @RequestParam("precio_total")Integer precio_total, RedirectAttributes redirectAttributes){
+    public String reservar(@RequestParam("vuelo_id")Integer vuelo_id, @RequestParam("user_id") Integer user_id, @RequestParam("precio_total")Integer precio_total, RedirectAttributes redirectAttributes){
 
-        reservaRepository.reservar(reserva_id, vuelo_id, user_id, precio_total);
+        reservaRepository.reservar(vuelo_id, user_id, precio_total);
 
         redirectAttributes.addAttribute("usuarioid", user_id);
+        ///System.out.println();
         return "redirect:/homepage";
     }
 
